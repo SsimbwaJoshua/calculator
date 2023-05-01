@@ -15,7 +15,7 @@ function App() {
               <input placeholder="$" className="input-field" />
             </form>
             <div className="tips-section">
-              <h2>select Tip %</h2>
+              <h2>Select Tip %</h2>
               <div className="btn-discounts">
                 <button className="tip-btn">5%</button>
                 <button className="tip-btn">10%</button>
