@@ -13,7 +13,9 @@ body {
 }
 
 .App {
-  background-color: rgb(199, 224, 236);
+  /* background-color: rgb(199, 224, 236); */
+  background: #c5e4e7;
+
   min-height: 100vh;
 
   margin: 0 auto;
