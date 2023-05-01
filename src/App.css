@@ -1,38 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
 .App {
-  text-align: center;
-}
+  /* text-align: center; */
+  background-color: rgb(203, 234, 250);
+  height: 100vh;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  margin: 0 auto;
+  padding: 0 3rem;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.tittle > h1 {
+  font-size: 2rem;
+  letter-spacing: 5px;
+}
+.tittle {
+  margin-bottom: 5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* input fields */
+.input-field {
+  color: #f3f9fa;
+  height: 2.5rem;
+}
+
+/* The calculator */
+.whole-calc {
+  /* max-width: 92rem; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  justify-content: center;
+
+  background-color: beige;
+  padding: 3rem;
+  border-radius: 10px;
+}
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #5e7a7d;
 }
