@@ -14,35 +14,41 @@ function App() {
             <form>
               <input placeholder="$" className="input-field" />
             </form>
-            <h2>select Tip %</h2>
-            <div>
-              <button>5%</button>
-              <button>10%</button>
-              <button>15%</button>
-              <button>25%</button>
-              <button>50%</button>
-              <button>Custom</button>
+            <div className="tips-section">
+              <h2>select Tip %</h2>
+              <div className="btn-discounts">
+                <button className="tip-btn">5%</button>
+                <button className="tip-btn">10%</button>
+                <button className="tip-btn">15%</button>
+                <button className="tip-btn">25%</button>
+                <button className="tip-btn">50%</button>
+                <button className="tip-btn custom-btn">Custom</button>
+              </div>
             </div>
+            <h2>Number of People</h2>
+
             <form>
               <input placeholder="##" className="input-field" />
             </form>
           </div>
-          <div>
+          <div className="calc-right">
             <div>
-              <div>
-                <h2>Tip Amount</h2>
-                <p>/ person</p>
+              <div className="tipping tip-space">
+                <div className="tip-amount">
+                  <h2>Tip Amount</h2>
+                  <p>/ person</p>
+                </div>
+                <p className="fig-amounts">$ 0.00</p>
               </div>
-              <p>$ 0.00</p>
-            </div>
-            <div>
-              <div>
-                <h2>Total</h2>
-                <p>/ person</p>
+              <div className="tipping">
+                <div className="tip-amount">
+                  <h2>Total</h2>
+                  <p>/ person</p>
+                </div>
+                <p className="fig-amounts">$ 0.00</p>
               </div>
-              <p>$ 0.00</p>
             </div>
-            <button>RESET</button>
+            <button className="btn-reset">RESET</button>
           </div>
         </div>
       </div>

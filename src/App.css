@@ -23,6 +23,7 @@ html {
 .tittle > h1 {
   font-size: 2rem;
   letter-spacing: 5px;
+  text-align: center;
 }
 .tittle {
   margin-bottom: 5rem;
@@ -30,8 +31,14 @@ html {
 
 /* input fields */
 .input-field {
-  color: #f3f9fa;
-  height: 2.5rem;
+  background: #f3f9fa;
+  border: none;
+
+  height: 4rem;
+  width: 90%;
+
+  margin-top: 0.5rem;
+  padding: 0 1rem;
 }
 
 /* The calculator */
@@ -41,8 +48,9 @@ html {
   grid-template-columns: repeat(2, 1fr);
   align-content: center;
   justify-content: center;
+  column-gap: 2rem;
 
-  background-color: beige;
+  background-color: #ffffff;
   padding: 3rem;
   border-radius: 10px;
 }
@@ -50,4 +58,71 @@ h2 {
   font-size: 1.6rem;
   font-weight: 700;
   color: #5e7a7d;
+}
+
+.tips-section {
+  margin: 2.4rem 0;
+}
+
+.btn-discounts {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.tip-btn {
+  min-width: 11rem;
+  background-color: #00474b;
+  padding: 0.8rem 1.2rem;
+  color: #ffffff;
+  font-size: 2.4rem;
+  border-radius: 5px;
+}
+.custom-btn {
+  color: #547878;
+  background-color: #f3f9fa;
+  border: none;
+}
+
+/* calc-right */
+.calc-right {
+  background-color: #00474b;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tip-amount > h2 {
+  color: #ffffff;
+}
+.tip-amount > p {
+  color: #7f9d9f;
+}
+
+.fig-amounts {
+  color: #26c2ae;
+  font-size: 4.8rem;
+}
+.tipping {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tip-space {
+  margin-bottom: 1.8rem;
+}
+
+.btn-reset {
+  padding: 0.5rem 1.4rem;
+  width: 90%;
+  height: 4rem;
+  align-self: center;
+  background-color: #0d686d;
+  color: #00474b;
+  border: none;
+  border-radius: 5px;
 }
