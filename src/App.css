@@ -93,7 +93,7 @@ h2 {
 /* calc-right */
 .calc-right {
   background-color: #00474b;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   border-radius: 10px;
 
   display: flex;
@@ -111,6 +111,7 @@ h2 {
 .fig-amounts {
   color: #26c2ae;
   font-size: 4.8rem;
+  font-weight: 700;
 }
 .tipping {
   display: flex;
@@ -130,4 +131,71 @@ h2 {
   color: #00474b;
   border: none;
   border-radius: 5px;
+}
+
+/*///////////////////// media querries /////////////////////*/
+/* 768px */
+@media (max-width: 48em) {
+  .btn-discounts {
+    grid-template-columns: repeat(2, 1fr);
+    /* padding: 0 1rem; */
+  }
+  .tip-btn {
+    min-width: 5rem;
+    background-color: #00474b;
+    padding: 0.8rem 1rem;
+  }
+  .custom-btn {
+    color: #547878;
+    background-color: #f3f9fa;
+    border: none;
+  }
+  .whole-calc {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+/* 496px */
+@media (max-width: 31em) {
+  .whole-calc {
+    grid-template-columns: 1fr;
+    width: 100vw;
+    padding-bottom: 9rem;
+  }
+  .btn-reset {
+    margin: 5rem 0 3rem 0;
+  }
+
+  .fig-amounts {
+    color: #26c2ae;
+    font-size: 4.4rem;
+    font-weight: 700;
+  }
+  .tip-btn {
+    min-width: 5rem;
+    font-size: 3rem;
+    background-color: #00474b;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+  }
+  .custom-btn {
+    color: #547878;
+    background-color: #f3f9fa;
+    border: none;
+  }
+  .tittle {
+    margin-bottom: 5rem;
+  }
+  .tips-section {
+    margin: 3.6rem 0;
+  }
+  .field-2 {
+    margin-bottom: 3.6rem;
+  }
+  .btn-discounts {
+    gap: 1.5rem;
+  }
+  .input-field {
+    width: 100%;
+  }
 }

@@ -28,7 +28,7 @@ function App() {
             <h2>Number of People</h2>
 
             <form>
-              <input placeholder="##" className="input-field" />
+              <input placeholder="##" className="input-field field-2" />
             </form>
           </div>
           <div className="calc-right">
@@ -38,14 +38,14 @@ function App() {
                   <h2>Tip Amount</h2>
                   <p>/ person</p>
                 </div>
-                <p className="fig-amounts">$ 0.00</p>
+                <p className="fig-amounts">$0.00</p>
               </div>
               <div className="tipping">
                 <div className="tip-amount">
                   <h2>Total</h2>
                   <p>/ person</p>
                 </div>
-                <p className="fig-amounts">$ 0.00</p>
+                <p className="fig-amounts">$0.00</p>
               </div>
             </div>
             <button className="btn-reset">RESET</button>
