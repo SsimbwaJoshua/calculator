@@ -1,6 +1,22 @@
 import "./App.css";
+import React from "react";
+import { useState } from "react";
+import { HiUser } from "react-icons/hi";
 
 function App() {
+  const [bill, setBill] = useState("");
+  const [nosPeople, setNosPeople] = useState("");
+
+  //setting bill value
+  const billValue = (event) => {
+    setBill(event.target.value);
+  };
+
+  // setting number of people
+  const numberOfPeople = (event) => {
+    setNosPeople(event.target.value);
+  };
+
   return (
     <div className="App">
       <div>
@@ -12,7 +28,16 @@ function App() {
           <div>
             <h2>Bill</h2>
             <form>
-              <input placeholder="$" className="input-field" />
+              <div className="bill-input">
+                <input
+                  placeholder="0"
+                  type="number"
+                  value={bill}
+                  onChange={billValue}
+                  className="input-field input-field-1"
+                />
+                <p className="top-input-fake-placeholder">$</p>
+              </div>
             </form>
             <div className="tips-section">
               <h2>Select Tip %</h2>
@@ -28,7 +53,18 @@ function App() {
             <h2>Number of People</h2>
 
             <form>
-              <input placeholder="##" className="input-field field-2" />
+              <div className="bill-input">
+                <input
+                  placeholder="0"
+                  type="number"
+                  value={nosPeople}
+                  onChange={numberOfPeople}
+                  className="input-field field-2"
+                />
+                <p className="top-input-fake-placeholder">
+                  <HiUser />
+                </p>
+              </div>
             </form>
           </div>
           <div className="calc-right">
