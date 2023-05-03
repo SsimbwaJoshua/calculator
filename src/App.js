@@ -2,12 +2,48 @@ import "./App.css";
 import React from "react";
 import { useState } from "react";
 import { HiUser } from "react-icons/hi";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
 
 function App() {
+  // states
+
   const [bill, setBill] = useState("");
   const [nosPeople, setNosPeople] = useState("");
   const [customTip, setCustomTip] = useState("");
   const [activebtn, setActiveBtn] = useState(false);
+
+  //dynamic buttons
+  const buttons = [
+    { id: 1, text: 5 },
+    { id: 2, text: 10 },
+    { id: 3, text: 15 },
+    { id: 4, text: 25 },
+    { id: 5, text: 50 },
+  ];
+
+  const workingButtons = buttons.map((BTN) => {
+    const BTNText = BTN.text;
+    // console.log(BTNText);
+    return (
+      <button key={BTN.id} className="tip-btn">
+        {BTNText}%
+      </button>
+    );
+  });
+
+  ///Form validations
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const form1Submit = (data) => {
+    console.log(data);
+    console.log("form1");
+  };
 
   //setting bill value
   const billValue = (event) => {
@@ -25,31 +61,33 @@ function App() {
   };
 
   //when a button is clicked and is active
-  const btnclick1 = () => {
-    console.log("clicked 1 ");
-    const clickedButton = document.querySelector(".btn-1");
-    clickedButton.classList.toggle("active-btn");
-  };
-  const btnclick2 = () => {
-    console.log("clicked 2 ");
-    const clickedButton = document.querySelector(".btn-2");
-    clickedButton.classList.toggle("active-btn");
-  };
-  const btnclick3 = () => {
-    console.log("clicked 3 ");
-    const clickedButton = document.querySelector(".btn-3");
-    clickedButton.classList.toggle("active-btn");
-  };
-  const btnclick4 = () => {
-    console.log("clicked 4 ");
-    const clickedButton = document.querySelector(".btn-4");
-    clickedButton.classList.toggle("active-btn");
-  };
-  const btnclick5 = () => {
-    console.log("clicked 5 ");
-    const clickedButton = document.querySelector(".btn-5");
-    clickedButton.classList.toggle("active-btn");
-  };
+  const btnclick = () => {};
+
+  // const btnclick1 = () => {
+  //   console.log("clicked 1 ");
+  //   const clickedButton = document.querySelector(".btn-1");
+  //   clickedButton.classList.toggle("active-btn");
+  // };
+  // const btnclick2 = () => {
+  //   console.log("clicked 2 ");
+  //   const clickedButton = document.querySelector(".btn-2");
+  //   clickedButton.classList.toggle("active-btn");
+  // };
+  // const btnclick3 = () => {
+  //   console.log("clicked 3 ");
+  //   const clickedButton = document.querySelector(".btn-3");
+  //   clickedButton.classList.toggle("active-btn");
+  // };
+  // const btnclick4 = () => {
+  //   console.log("clicked 4 ");
+  //   const clickedButton = document.querySelector(".btn-4");
+  //   clickedButton.classList.toggle("active-btn");
+  // };
+  // const btnclick5 = () => {
+  //   console.log("clicked 5 ");
+  //   const clickedButton = document.querySelector(".btn-5");
+  //   clickedButton.classList.toggle("active-btn");
+  // };
 
   return (
     <div className="App">
@@ -61,10 +99,10 @@ function App() {
         <div className="whole-calc">
           <div>
             <h2>Bill</h2>
-            <form>
+            <form onSubmit={handleSubmit(form1Submit)}>
               <div className="bill-input">
                 <input
-                  required
+                  {...register("billValue")}
                   placeholder="0"
                   type="number"
                   value={bill}
@@ -77,21 +115,12 @@ function App() {
             <div className="tips-section">
               <h2>Select Tip %</h2>
               <div className="btn-discounts">
-                <button className="tip-btn btn-1" onClick={btnclick1}>
-                  5%
-                </button>
-                <button className="tip-btn btn-2" onClick={btnclick2}>
-                  10%
-                </button>
-                <button className="tip-btn btn-3" onClick={btnclick3}>
-                  15%
-                </button>
-                <button className="tip-btn btn-4" onClick={btnclick4}>
-                  25%
-                </button>
-                <button className="tip-btn btn-5" onClick={btnclick5}>
-                  50%
-                </button>
+                {workingButtons}
+                {/* <button className="tip-btn btn-1">5%</button>
+                <button className="tip-btn btn-2">10%</button>
+                <button className="tip-btn btn-3">15%</button>
+                <button className="tip-btn btn-4">25%</button>
+                <button className="tip-btn btn-5">50%</button> */}
                 <div>
                   <input
                     className="input-field custom-btn"
@@ -103,10 +132,10 @@ function App() {
             </div>
             <h2>Number of People</h2>
 
-            <form>
+            <form onSubmit={handleSubmit(form1Submit)}>
               <div className="bill-input">
                 <input
-                  required
+                  {...register("peopleNum")}
                   placeholder="0"
                   type="number"
                   value={nosPeople}
