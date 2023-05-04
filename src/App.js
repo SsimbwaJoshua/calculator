@@ -36,17 +36,13 @@ function App() {
     const tipAmount = bill * percentage;
 
     //tip Amount per person
-    const tipPerPerson = (tipAmount / nosPeople).toFixed(2);
+    const tipPerPerson = (tipAmount / nosPeople).toFixed(1);
     setGeneralTipAmount(tipPerPerson);
 
     //total per person
 
-    const totalPaid = (+bill + +tipAmount).toFixed(2);
-    console.log(bill);
-    console.log(tipAmount);
-    console.log(totalPaid);
+    const totalPaid = (+bill + +tipAmount).toFixed(1);
     const totalPaidPersonally = totalPaid / nosPeople;
-
     setTotalPerperson(totalPaidPersonally);
   };
   const workingButtons = buttons.map((BTN) => {
@@ -104,6 +100,28 @@ function App() {
 
   //////////////////////////////////////////////////////////////////
 
+  //customFormSubmit
+  const customFormSubmit = (event) => {
+    event.preventDefault();
+    setClickedBtnId(null);
+
+    const custPercent = customTip / 100;
+    console.log(custPercent);
+
+    // Tip amount
+    const tipAmount = bill * custPercent;
+
+    //tip Amount per person
+    const tipPerPerson = (tipAmount / nosPeople).toFixed(1);
+    setGeneralTipAmount(tipPerPerson);
+
+    //total per person
+
+    const totalPaid = (+bill + +tipAmount).toFixed(1);
+    const totalPaidPersonally = totalPaid / nosPeople;
+    setTotalPerperson(totalPaidPersonally);
+  };
+
   // const btnclick1 = () => {
   //   console.log("clicked 1 ");
   //   const clickedButton = document.querySelector(".btn-1");
@@ -159,11 +177,14 @@ function App() {
                 {workingButtons}
 
                 <div>
-                  <input
-                    className="input-field custom-btn"
-                    placeholder="Custom"
-                    onChange={customingTip}
-                  />
+                  <form onSubmit={customFormSubmit}>
+                    <input
+                      className="input-field custom-btn"
+                      placeholder="Custom"
+                      onChange={customingTip}
+                      type="number"
+                    />
+                  </form>
                 </div>
               </div>
             </div>
