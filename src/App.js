@@ -41,8 +41,8 @@ function App() {
 
     //total per person
 
-    const totalPaid = (+bill + +tipAmount).toFixed(1);
-    const totalPaidPersonally = totalPaid / nosPeople;
+    const totalPaid = +bill + +tipAmount;
+    const totalPaidPersonally = (totalPaid / nosPeople).toFixed(1);
     setTotalPerperson(totalPaidPersonally);
   };
   const workingButtons = buttons.map((BTN) => {
@@ -106,7 +106,6 @@ function App() {
     setClickedBtnId(null);
 
     const custPercent = customTip / 100;
-    console.log(custPercent);
 
     // Tip amount
     const tipAmount = bill * custPercent;
@@ -117,9 +116,23 @@ function App() {
 
     //total per person
 
-    const totalPaid = (+bill + +tipAmount).toFixed(1);
-    const totalPaidPersonally = totalPaid / nosPeople;
+    const totalPaid = +bill + +tipAmount;
+    const totalPaidPersonally = (totalPaid / nosPeople).toFixed(1);
     setTotalPerperson(totalPaidPersonally);
+
+    //resting the input filed
+  };
+
+  /////////////////////////////////////////////////////////////////////////
+
+  // reset everything
+  const reset = () => {
+    setBill("");
+    setNosPeople("");
+    setCustomTip("");
+    setGeneralTipAmount("0.00");
+    setTotalPerperson("0.00");
+    setClickedBtnId(null);
   };
 
   // const btnclick1 = () => {
@@ -179,6 +192,7 @@ function App() {
                 <div>
                   <form onSubmit={customFormSubmit}>
                     <input
+                      {...register("customValue")}
                       className="input-field custom-btn"
                       placeholder="Custom"
                       onChange={customingTip}
@@ -224,7 +238,12 @@ function App() {
                 <p className="fig-amounts">${totalPerPerson}</p>
               </div>
             </div>
-            <button className="btn-reset">RESET</button>
+            <button
+              className={totalPerPerson === "0.00" ? "btn-reset" : "active-btn"}
+              onClick={reset}
+            >
+              RESET
+            </button>
           </div>
         </div>
       </div>
