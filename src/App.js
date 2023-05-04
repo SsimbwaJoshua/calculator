@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { HiUser } from "react-icons/hi";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 function App() {
@@ -11,15 +12,15 @@ function App() {
   const [bill, setBill] = useState("");
   const [nosPeople, setNosPeople] = useState("");
   const [customTip, setCustomTip] = useState("");
-  const [activebtn, setActiveBtn] = useState(false);
+  const [generalTipAmount, setGeneralTipAmount] = useState(null);
 
   ////////////////////dynamic buttons//////////////////////////////
   const buttons = [
-    { id: 1, text: 5 },
-    { id: 2, text: 10 },
-    { id: 3, text: 15 },
-    { id: 4, text: 25 },
-    { id: 5, text: 50 },
+    { id: 1, text: 5, percentage: 0.05 },
+    { id: 2, text: 10, percentage: 0.1 },
+    { id: 3, text: 15, percentage: 0.15 },
+    { id: 4, text: 25, percentage: 0.25 },
+    { id: 5, text: 50, percentage: 0.5 },
   ];
 
   //when a button is clicked and is active
@@ -27,15 +28,22 @@ function App() {
   const [clickedBtnId, setClickedBtnId] = useState(null);
 
   //when a button is clicked and is active
-  const btnclick = (id) => {
+  const btnclick = (id, percentage) => {
     setClickedBtnId(id);
+
+    // Tip amount
+    const tipAmount = bill * percentage;
+
+    //tip Amount per person
+    const tipPerPerson = (tipAmount / nosPeople).toFixed(2);
+    setGeneralTipAmount(tipPerPerson);
   };
   const workingButtons = buttons.map((BTN) => {
     const BTNText = BTN.text;
 
     return (
       <button
-        onClick={() => btnclick(BTN.id)}
+        onClick={() => btnclick(BTN.id, BTN.percentage)}
         key={BTN.id}
         //when a button is clicked and is active
         className={BTN.id === clickedBtnId ? "active-btn" : "tip-btn"}
@@ -45,19 +53,29 @@ function App() {
     );
   });
 
-  /////////////////////Form validations/////////////////////////////
+  //////////////////////Form validations//////////////////////////////////
+
+  const schema = Yup.object().shape({
+    billValue: Yup.number().positive().required("please enter amount"),
+    peopleNum: Yup.number()
+      .positive()
+      .integer()
+      .min(1)
+      .required("Can't be zero"),
+  });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   const form1Submit = (data) => {
     console.log(data);
     console.log("form1");
   };
 
+  ///////////////////////////////////////////////////////////////////////////
   //setting bill value
   const billValue = (event) => {
     setBill(event.target.value);
@@ -72,6 +90,8 @@ function App() {
   const customingTip = (event) => {
     setCustomTip(event.target.value);
   };
+
+  //////////////////////////////////////////////////////////////////
 
   // const btnclick1 = () => {
   //   console.log("clicked 1 ");
@@ -110,11 +130,11 @@ function App() {
           <div>
             <h2>Bill</h2>
             <form onSubmit={handleSubmit(form1Submit)}>
+              {/* <p>{errors.billValue?.message}</p> */}
               <div className="bill-input">
                 <input
                   {...register("billValue")}
                   placeholder="0"
-                  type="number"
                   value={bill}
                   onChange={billValue}
                   className="input-field input-field-1"
@@ -139,14 +159,15 @@ function App() {
             <h2>Number of People</h2>
 
             <form onSubmit={handleSubmit(form1Submit)}>
+              {/* <p>{errors.peopleNum.message}</p> */}
               <div className="bill-input">
                 <input
                   {...register("peopleNum")}
                   placeholder="0"
-                  type="number"
                   value={nosPeople}
                   onChange={numberOfPeople}
                   className="input-field field-2"
+                  required
                 />
                 <p className="top-input-fake-placeholder">
                   <HiUser />
@@ -161,7 +182,7 @@ function App() {
                   <h2>Tip Amount</h2>
                   <p>/ person</p>
                 </div>
-                <p className="fig-amounts">$0.00</p>
+                <p className="fig-amounts">${generalTipAmount}</p>
               </div>
               <div className="tipping">
                 <div className="tip-amount">
