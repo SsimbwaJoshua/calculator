@@ -135,32 +135,6 @@ function App() {
     setClickedBtnId(null);
   };
 
-  // const btnclick1 = () => {
-  //   console.log("clicked 1 ");
-  //   const clickedButton = document.querySelector(".btn-1");
-  //   clickedButton.classList.toggle("active-btn");
-  // };
-  // const btnclick2 = () => {
-  //   console.log("clicked 2 ");
-  //   const clickedButton = document.querySelector(".btn-2");
-  //   clickedButton.classList.toggle("active-btn");
-  // };
-  // const btnclick3 = () => {
-  //   console.log("clicked 3 ");
-  //   const clickedButton = document.querySelector(".btn-3");
-  //   clickedButton.classList.toggle("active-btn");
-  // };
-  // const btnclick4 = () => {
-  //   console.log("clicked 4 ");
-  //   const clickedButton = document.querySelector(".btn-4");
-  //   clickedButton.classList.toggle("active-btn");
-  // };
-  // const btnclick5 = () => {
-  //   console.log("clicked 5 ");
-  //   const clickedButton = document.querySelector(".btn-5");
-  //   clickedButton.classList.toggle("active-btn");
-  // };
-
   return (
     <div className="App">
       <div>
@@ -192,7 +166,7 @@ function App() {
                 <div>
                   <form onSubmit={customFormSubmit}>
                     <input
-                      {...register("customValue")}
+                      value={customTip}
                       className="input-field custom-btn"
                       placeholder="Custom"
                       onChange={customingTip}
