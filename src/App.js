@@ -13,7 +13,7 @@ function App() {
   const [customTip, setCustomTip] = useState("");
   const [activebtn, setActiveBtn] = useState(false);
 
-  //dynamic buttons
+  ////////////////////dynamic buttons//////////////////////////////
   const buttons = [
     { id: 1, text: 5 },
     { id: 2, text: 10 },
@@ -22,17 +22,30 @@ function App() {
     { id: 5, text: 50 },
   ];
 
+  //when a button is clicked and is active
+
+  const [clickedBtnId, setClickedBtnId] = useState(null);
+
+  //when a button is clicked and is active
+  const btnclick = (id) => {
+    setClickedBtnId(id);
+  };
   const workingButtons = buttons.map((BTN) => {
     const BTNText = BTN.text;
-    // console.log(BTNText);
+
     return (
-      <button key={BTN.id} className="tip-btn">
+      <button
+        onClick={() => btnclick(BTN.id)}
+        key={BTN.id}
+        //when a button is clicked and is active
+        className={BTN.id === clickedBtnId ? "active-btn" : "tip-btn"}
+      >
         {BTNText}%
       </button>
     );
   });
 
-  ///Form validations
+  /////////////////////Form validations/////////////////////////////
 
   const {
     register,
@@ -59,9 +72,6 @@ function App() {
   const customingTip = (event) => {
     setCustomTip(event.target.value);
   };
-
-  //when a button is clicked and is active
-  const btnclick = () => {};
 
   // const btnclick1 = () => {
   //   console.log("clicked 1 ");
@@ -116,11 +126,7 @@ function App() {
               <h2>Select Tip %</h2>
               <div className="btn-discounts">
                 {workingButtons}
-                {/* <button className="tip-btn btn-1">5%</button>
-                <button className="tip-btn btn-2">10%</button>
-                <button className="tip-btn btn-3">15%</button>
-                <button className="tip-btn btn-4">25%</button>
-                <button className="tip-btn btn-5">50%</button> */}
+
                 <div>
                   <input
                     className="input-field custom-btn"
