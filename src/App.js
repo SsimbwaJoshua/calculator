@@ -12,7 +12,8 @@ function App() {
   const [bill, setBill] = useState("");
   const [nosPeople, setNosPeople] = useState("");
   const [customTip, setCustomTip] = useState("");
-  const [generalTipAmount, setGeneralTipAmount] = useState(null);
+  const [generalTipAmount, setGeneralTipAmount] = useState("0.00");
+  const [totalPerPerson, setTotalPerperson] = useState("0.00");
 
   ////////////////////dynamic buttons//////////////////////////////
   const buttons = [
@@ -37,6 +38,16 @@ function App() {
     //tip Amount per person
     const tipPerPerson = (tipAmount / nosPeople).toFixed(2);
     setGeneralTipAmount(tipPerPerson);
+
+    //total per person
+
+    const totalPaid = (+bill + +tipAmount).toFixed(2);
+    console.log(bill);
+    console.log(tipAmount);
+    console.log(totalPaid);
+    const totalPaidPersonally = totalPaid / nosPeople;
+
+    setTotalPerperson(totalPaidPersonally);
   };
   const workingButtons = buttons.map((BTN) => {
     const BTNText = BTN.text;
@@ -189,7 +200,7 @@ function App() {
                   <h2>Total</h2>
                   <p>/ person</p>
                 </div>
-                <p className="fig-amounts">$0.00</p>
+                <p className="fig-amounts">${totalPerPerson}</p>
               </div>
             </div>
             <button className="btn-reset">RESET</button>
