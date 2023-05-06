@@ -179,8 +179,8 @@ function App() {
             <h2>Number of People</h2>
 
             <form onSubmit={handleSubmit(form1Submit)}>
-              {/* <p>{errors.peopleNum.message}</p> */}
               <div className="bill-input">
+                {/* <p>{errors.peopleNum?.message}</p> */}
                 <input
                   {...register("peopleNum")}
                   placeholder="0"
