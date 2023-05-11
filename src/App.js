@@ -110,7 +110,7 @@ function App() {
     // Tip amount
     const tipAmount = bill * custPercent;
 
-    //tip Amount per person
+    //tip Amount per persons
     const tipPerPerson = (tipAmount / nosPeople).toFixed(1);
     setGeneralTipAmount(tipPerPerson);
 
